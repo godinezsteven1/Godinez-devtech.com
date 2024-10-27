@@ -57,3 +57,32 @@ canvas.webgl {
     color: #ffffff;
     box-shadow: 0px 0px 12px rgba(255, 0, 150, 0.6), 0px 0px 12px rgba(0, 150, 255, 0.6);
 }
+
+.back-arrow {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    align-items: center;
+}
+
+.back-arrow:hover {
+    background-color: rgba(50, 50, 50, 0.9);
+    transform: scale(1.05);
+}
+
+.arrow-icon {
+    margin-right: 8px;
+    font-weight: bold;
+    font-size: 18px;
+}

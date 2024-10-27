@@ -5,8 +5,8 @@ website. However while using Three.js I was not going to create my own models as
 complex.
 
 I downloaded the desk set up from 'sketchfab.com' with some free models, like the desk set up, is
-under 'CC Attribution license'. The creator called 'Ankledot' an artist based in Poland. The
-following link is to other work they have done. https://sketchfab.com/Ankledot
+under 'CC Attribution license'. The creator called 'Nyangire'. The
+following link is to other work they have done. https://sketchfab.com/Nyangire
 
 "This license enables reusers to distribute, remix, adapt, and build upon the material in any
 medium or format, so long as attribution is given to the creator. The license allows for commercial
@@ -14,22 +14,18 @@ use. CC BY includes the following elements:
 BY: credit must be given to the creator."
 -https://creativecommons.org/share-your-work/cclicenses/
 
-The original desk contained a monster can in the desk, I ended up removing it as it did not fit
+The original desk contained a monitor in the desk, I ended up removing it as it did not fit
 with what I was going for. I wanted to delete it through inspecting its children and remove by
 object name but that took to long as I could not find it. The final solution was just opening the
 image in blender and deleting the can which if I am being honest I what I should of done in the
 first case.
 
-I downloaded the chair from 'sketchfab.com' with some free models, like the chair, is
-under 'CC Attribution license'. The creator called 'thethieme' an artist based in Sweden. The
-following link is to other work they have done. https://sketchfab.com/thethieme
+I downloaded the monitor it has now from 'sketchfab.com' with some free models, like the chair, is
+under 'CC Attribution license'. The creator called 'Ethica' an artist based in North Carolina. The
+following link is to other work they have done. https://sketchfab.com/Ethica
 
-The default left monitor image is AI generated from ChatGPT4
 
-I have been using blender a lot in order to get children name to apply my screens. The greatest
-problem was the actual screen for the left monitor is not under the left monitor's child. Instead I
-am going to have to call the correct parent then call that child which is why its blockier and not
-as clean as the right monitor function.
+I have been using blender a lot in order to get children name to apply my screens.
 
 I wanted this project to take more of apple like aesthetic. I took a lot of inspiration from a
 fellow developer, https://henryheffernan.com/ where his portfolio is truly amazing.
