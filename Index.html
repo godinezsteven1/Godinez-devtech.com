@@ -13,8 +13,13 @@
     </style>
 </head>
 <body>
-
-
+<!-- cool loading terminal screen  -->
+<div id="loadingTerminal" class="loading-screen">
+    <div class="Loading terminal">
+        <p id="loadingText"></p>
+        <p id="loadingWarning"> Warning ⚠️: View on A desktop for Best experience </p>
+        <button id="startButton" onclick="startExperience()">Start Experience </button></div>
+</div>
 <div class="info">
      <div class="item-sub"> Steven Godinez</div>
     <div class="item-sub"> Software Engineer</div>
@@ -22,6 +27,7 @@
 <div id="backArrow" class="back-arrow" onclick="zoomOut()">
     <span class="arrow-icon">←</span> Back
 </div>
+
 <canvas class="webgl"></canvas>
 <script type="module" src="./js/script.js"></script>
 </body>

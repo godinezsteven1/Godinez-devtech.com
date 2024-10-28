@@ -1,13 +1,16 @@
-body {
-    background-color: #aaa9ae;
-}
-
+/**
+Color gradients to appear room like
+ */
 canvas.webgl {
     display: block;
     width: 100vw;
     height: 100vh;
+    background: linear-gradient(to bottom, #d4d3d8, #aaa9ae, #7f7e84);
 }
 
+/**
+information of SWE me! + helpers
+ */
 .info {
     position: fixed;
     top: 40px;
@@ -58,22 +61,31 @@ canvas.webgl {
     box-shadow: 0px 0px 12px rgba(255, 0, 150, 0.6), 0px 0px 12px rgba(0, 150, 255, 0.6);
 }
 
+/**
+Back arrow for after zoom in + helpers
+ */
 .back-arrow {
     display: none;
     position: fixed;
     top: 20px;
     left: 20px;
-    padding: 10px 20px;
-    background-color: rgba(0, 0, 0, 0.8);
+    padding: 15px 25px;
+    background: linear-gradient(135deg, rgba(51, 51, 255, 0.8), rgba(255, 102, 179, 0.8));
     color: #ffffff;
-    font-size: 14px;
-    font-family: Arial, sans-serif;
-    border-radius: 8px;
+    font-size: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 15px;
+    border: 2px solid transparent;
     cursor: pointer;
-    z-index: 10;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    z-index: 110;
+    box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(20px);
+    background-clip: padding-box;
+    box-shadow: 0 0 25px rgba(255, 102, 179, 0.6), 0 0 25px rgba(51, 51, 255, 0.6);
+    animation: border-glow 3s infinite alternate;
+    display: none;
     align-items: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .back-arrow:hover {
@@ -85,4 +97,53 @@ canvas.webgl {
     margin-right: 8px;
     font-weight: bold;
     font-size: 18px;
+}
+
+/**
+Loading screen + helpers
+ */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000; /* background color */
+    /*color: #fff; !* text *!*/
+    color: #d3d2d4; /* not eggshell white lol */
+    font-family: monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.loading-terminal {
+    text-align: center;
+}
+
+#loadingText {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+#loadingWarning {
+    /*color: #f80;*/
+    color: #ff0000;
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+}
+
+#startButton {
+    display: none;
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #444;
+    border: none;
+    cursor: pointer;
+}
+
+#startButton:hover {
+    background-color: #666;
 }
