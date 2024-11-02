@@ -9,21 +9,40 @@
         body {
             margin: 0;
             overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+            Arial, sans-serif;
         }
     </style>
 </head>
 <body>
-<!-- cool loading terminal screen  -->
+<!-- Clean Loading Screen -->
 <div id="loadingTerminal" class="loading-screen">
-    <div class="Loading terminal">
-        <p id="loadingText"></p>
-        <p id="loadingWarning"> Warning ⚠️: View on A desktop for Best experience </p>
-        <button id="startButton" onclick="startExperience()">Start Experience </button></div>
+    <div class="profile-container">
+        <img src="./Static/LoadingScreen/headshot.JPG" alt="LinkedIn headshot" class="profile-pic">
+        <span class="profile-name">Steven Godinez</span>
+    </div>
+    <div class="loading-container">
+        <div class="loading-text-container">
+            <p id="loadingText"></p>
+            <p id="loadingWarning">⚠️ View on Desktop for Best Experience</p>
+            <button id="startButton" onclick="startExperience()" style="display: none;">
+                Start Experience</button>
+        </div>
+    </div>
 </div>
+
+<!-- Info and Navigation -->
 <div class="info">
-     <div class="item-sub"> Steven Godinez</div>
-    <div class="item-sub"> Software Engineer</div>
+    <!-- LinkedIn Link -->
+    <a href="https://www.linkedin.com/in/godinezsteven/" target="_blank" class="item-sub">
+        Steven Godinez
+    </a>
+    <!-- GitHub Link -->
+    <a href="https://github.com/godinezsteven1" target="_blank" class="item-sub">
+        Software Engineer
+    </a>
 </div>
+
 <div id="backArrow" class="back-arrow" onclick="zoomOut()">
     <span class="arrow-icon">←</span> Back
 </div>

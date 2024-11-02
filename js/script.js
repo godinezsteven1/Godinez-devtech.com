@@ -20,7 +20,13 @@ const loadingWarning = document.getElementById('loadingWarning');
 const startButton = document.getElementById('startButton');
 let loaders = false;
 
-// type writrter effect
+
+
+
+
+/**
+ * text load
+ */
 function writtingEffects(text, element, speed = 50 , callback) {
     let u = 0;
     function type() {
@@ -36,7 +42,10 @@ function writtingEffects(text, element, speed = 50 , callback) {
 }
 function showWarningText() {
     loadingWarning.style.display = 'block';
-    startButton.style.display = 'inline-block';
+    // startButton.style.display = 'inline-block';
+    setTimeout(() => {
+        document.getElementById("startButton").style.display = 'inline-block';
+    }, 100);
 }
 writtingEffects("Loading Project Models...", loadingText, 80, showWarningText);
 
@@ -44,9 +53,8 @@ writtingEffects("Loading Project Models...", loadingText, 80, showWarningText);
 
 
 
-
 /**
- * GLTF Loader
+ * GLTF Loader for main screen
  */
 const modelLoader = new GLTFLoader();
 modelLoader.load(
@@ -74,12 +82,12 @@ modelLoader.load(
 
 
 
-
 /**
  * Start Experience Button Handler
  */
 function startExperience() {
-    loadingTerminal.style.display = 'none'; // Hide loading screen
+    loadingTerminal.style.display = 'none';
+    document.querySelector('.webgl').style.display = 'block';
     showInfoBox(); // shows info box error. debug log
     tick();
 }
@@ -103,19 +111,19 @@ function showBackArrow() {
 }
 function hideBackArrow() {
     const backArrow = document.getElementById('backArrow');
-    backArrow.style.display = 'none'; // hide arrow
+    backArrow.style.display = 'none';
     controls.enabled = true;
 }
 function hideInfoBox() {
     const infoBox = document.querySelector('.info');
     if (infoBox) {
-        infoBox.style.display = 'none'; // Hide the info box
+        infoBox.style.display = 'none';
     }
 }
 function showInfoBox() {
     const infoBox = document.querySelector('.info');
     if (infoBox) {
-        infoBox.style.display = 'block'; // show box
+        infoBox.style.display = 'block';
     }
 }
 hideInfoBox();
@@ -126,13 +134,12 @@ hideInfoBox();
  * Scene
  */
 const scene = new THREE.Scene();
-
 const perspectiveCamera = new THREE.PerspectiveCamera(
     75, // fov
     window.innerWidth / window.innerHeight, // aspect
     0.1, // near
     1000); // far
-perspectiveCamera.position.set(8,5,-1) // les position it
+perspectiveCamera.position.set(10.5788, 6.68453, -4.7782); // les position it
 const renderer = new THREE.WebGLRenderer({
                                              canvas: document.querySelector('.webgl'),
                                              antialias: true,
@@ -155,6 +162,10 @@ const controls = new OrbitControls(perspectiveCamera, renderer.domElement);
 controls.enableDamping = true;
 controls.minPolarAngle = Math.PI / 6;
 controls.maxPolarAngle = Math.PI / 2;// - Math.PI / 15;
+controls.target.set(-0.5249, -0.0701, -1.4007);
+// controls.enablePan = false; // for some reason crashes models when here
+controls.update();
+
 
 
 
@@ -244,6 +255,7 @@ loader.load('./Static/models/desk.glb', (gltf) => {
         }
     });
     scene.add(desk);
+    controls.enablePan = false;
     compScreen = findScreenObj(desk);
     if (compScreen) {
         compScreen.userData.isScreen = true;
@@ -252,6 +264,7 @@ loader.load('./Static/models/desk.glb', (gltf) => {
         console.error("check blender for screen hiearchy");
     }
     });
+
 
 
 
@@ -264,8 +277,8 @@ loader.load('./Static/models/desk.glb', (gltf) => {
 /**
  * Zoom to Screen Animation
  */
-const targetPosition = new THREE.Vector3(1.567, 3.817, -3.404);
-const targetLookAt = new THREE.Vector3(0.240, 3.644, -2.115);
+const targetPosition = new THREE.Vector3(1.5415, 3.7098, -3.1233);
+const targetLookAt = new THREE.Vector3(-0.4790, 3.5714, -1.0756);
 let zooming = false;
 let zoomStartTime;
 const zoomDuration = 1.5;
@@ -287,7 +300,7 @@ const animateZoom = (currentTime) => {
     }
 };
 // zoom out animation
-const originalPosition = new THREE.Vector3(8.4661, 5.6467, -5.1474);
+const originalPosition = new THREE.Vector3(10.5788, 6.68453, -4.7782);
 const originalTarget = new THREE.Vector3(-0.5249, -0.0701, -1.4007);
 
 function zoomOut() {
@@ -354,7 +367,6 @@ const tick = () => {
     window.requestAnimationFrame(tick);
 };
 
-// tick();
 
 
 
@@ -365,19 +377,17 @@ window.addEventListener('resize', () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
     perspectiveCamera.aspect = window.innerWidth / window.innerHeight;
     perspectiveCamera.updateProjectionMatrix();
+
 });
 
 
-// function logCameraInfo() {
+// function logCameraInfoHelp() {
 //     console.log("Camera Position:", perspectiveCamera.position);
 //     console.log("Camera Target:", controls.target);
 // }
-// Update to load onto this vector....
-// // Camera Position: _Vector3 {x: 1.5415020379380533, y: 3.709810641159292, z: -3.123318171491635}
-// // Camera Target: _Vector3 {x: -0.4790411468026463, y: 3.5714155694274528, z: -1.0755573422150415}
 //
 // window.addEventListener('keydown', (event) => {
 //     if (event.key === 'k') {
-//         logCameraInfo();
+//         logCameraInfoHelp();
 //     }
 // });
