@@ -2,6 +2,7 @@ import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { Raycaster } from 'three';
+import { CSS3DRenderer, CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
 
 
 
@@ -71,7 +72,6 @@ modelLoader.load(
                 node.receiveShadow = true;
             }
         });
-        scene.add(desk);
     },
     null,
     (error) => {
@@ -88,7 +88,7 @@ modelLoader.load(
 function startExperience() {
     loadingTerminal.style.display = 'none';
     document.querySelector('.webgl').style.display = 'block';
-    showInfoBox(); // shows info box error. debug log
+    showIntroBoxes(); // shows info box error. debug log
     tick();
 }
 window.startExperience = startExperience;
@@ -114,19 +114,27 @@ function hideBackArrow() {
     backArrow.style.display = 'none';
     controls.enabled = true;
 }
-function hideInfoBox() {
+function hideIntroBoxes() {
     const infoBox = document.querySelector('.info');
+    const bottomText = document.querySelector('.bottom-text');
     if (infoBox) {
         infoBox.style.display = 'none';
     }
+    if (bottomText) {
+        bottomText.style.display = 'none';
+    }
 }
-function showInfoBox() {
+function showIntroBoxes() {
     const infoBox = document.querySelector('.info');
+    const bottomText = document.querySelector('.bottom-text');
     if (infoBox) {
         infoBox.style.display = 'block';
     }
+    if (bottomText) {
+        bottomText.style.display = 'block';
+    }
 }
-hideInfoBox();
+hideIntroBoxes();
 
 
 
@@ -202,6 +210,7 @@ scene.add(ambientLight);
 
 
 
+
 /**
  * floor
  */
@@ -260,18 +269,12 @@ loader.load('./Static/models/desk.glb', (gltf) => {
     if (compScreen) {
         compScreen.userData.isScreen = true;
         // console.log("marked");
+
     } else {
         console.error("check blender for screen hiearchy");
     }
     });
 
-
-
-
-/**
- * Screen handler
- */
-// TBI
 
 
 /**
@@ -309,7 +312,7 @@ function zoomOut() {
         zoomStartTime = performance.now();
         hideBackArrow();
         isZoomedIn = false;
-        showInfoBox();
+        showIntroBoxes();
         const zoomOutAnimation = (currentTime) => {
             const elapsedTime = (currentTime - zoomStartTime) / 1000;
             const t = Math.min(elapsedTime / zoomDuration, 1); // Interpolation factor
@@ -349,7 +352,7 @@ window.addEventListener('click', (event) => {
     if (screenIntersect && !zooming && !isZoomedIn) {
         zooming = true;
         zoomStartTime = performance.now();
-        hideInfoBox();
+        hideIntroBoxes();
         requestAnimationFrame(animateZoom);
     }
 });
@@ -381,13 +384,21 @@ window.addEventListener('resize', () => {
 });
 
 
-// function logCameraInfoHelp() {
-//     console.log("Camera Position:", perspectiveCamera.position);
-//     console.log("Camera Target:", controls.target);
-// }
-//
-// window.addEventListener('keydown', (event) => {
-//     if (event.key === 'k') {
-//         logCameraInfoHelp();
-//     }
-// });
+function logCameraInfoHelp() {
+    console.log("Camera Position:", perspectiveCamera.position);
+    console.log("Camera Target:", controls.target);
+}
+
+window.addEventListener('keydown', (event) => {
+    if (event.key === 'k') {
+        logCameraInfoHelp();
+    }
+});
+
+
+
+
+
+/**
+ * Screen handler
+ */
