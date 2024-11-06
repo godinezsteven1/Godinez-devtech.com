@@ -88,8 +88,11 @@ modelLoader.load(
 function startExperience() {
     loadingTerminal.style.display = 'none';
     document.querySelector('.webgl').style.display = 'block';
+    const compscreenContainer = document.getElementById('compscreen-container');
+    compscreenContainer.style.display = 'block';
     showIntroBoxes(); // shows info box error. debug log
     tick();
+
 }
 window.startExperience = startExperience;
 
@@ -232,12 +235,16 @@ scene.add(floor);
  * Models helper
  */
 function findScreenObj(object) {
+    // console.log("checking for ," , object);
     if (object.name && object.name.toLowerCase().includes("screen")) {
+        console.log("found screen object" , object.name);
         return object;
-    } // do not know how to manipulate hiarchy in blender so manually find it.
-    for (let i = 0; i < object.children.length; i++) {
-        const found = findScreenObj(object.children[i]);
-        if (found) return found;
+    }
+    if (object.children) {
+        for (let i = 0; i < object.children.length; i++) {
+            const found = findScreenObj(object.children[i]);
+            if (found) return found;
+        }
     }
     return null;
 }
@@ -265,13 +272,37 @@ loader.load('./Static/models/desk.glb', (gltf) => {
     });
     scene.add(desk);
     controls.enablePan = false;
+
     compScreen = findScreenObj(desk);
+    console.log("found compscreen line 282" , compScreen);
     if (compScreen) {
         compScreen.userData.isScreen = true;
-        // console.log("marked");
+        const screenElement = document.getElementById('compscreen-container');
+        console.log("marked");
+        if (!screenElement) {
+            console.error("Cant find compscreen-container");
+            return;
+        }
+        const cssObject = new CSS3DObject(screenElement);
 
-    } else {
-        console.error("check blender for screen hiearchy");
+        const worldPos = new THREE.Vector3();
+        const worldQuat = new THREE.Quaternion();
+        compScreen.getWorldPosition(worldPos);
+        compScreen.getWorldQuaternion(worldQuat);
+
+
+        cssObject.position.copy(worldPos);
+        cssObject.quaternion.copy(worldQuat);
+        cssObject.position.y += 3.3;
+        cssObject.position.z += 2.405;
+        cssObject.translateX(2.0);
+        cssObject.rotation.x += Math.PI * 0.5;
+        cssObject.rotation.y += Math.PI * 0.75;
+        cssObject.rotation.z -= Math.PI * 0.25;
+        cssObject.scale.set(0.005, 0.008, 0.005);
+
+        scene.add(cssObject);
+        console.log("CSS3D object added to scene");
     }
     });
 
@@ -300,6 +331,8 @@ const animateZoom = (currentTime) => {
         zooming = false;
         isZoomedIn = true;
         showBackArrow();
+        // screen work when zoom in
+        document.getElementById('compscreen-container').classList.add('active');
     }
 };
 // zoom out animation
@@ -308,6 +341,8 @@ const originalTarget = new THREE.Vector3(-0.5249, -0.0701, -1.4007);
 
 function zoomOut() {
     if (isZoomedIn) {
+        // no interaction
+        document.getElementById('compscreen-container').classList.remove('active');
         zooming = true;
         zoomStartTime = performance.now();
         hideBackArrow();
@@ -367,6 +402,7 @@ const time = new THREE.Clock();
 const tick = () => {
     controls.update();
     renderer.render(scene, perspectiveCamera);
+    cssRenderer.render(scene, perspectiveCamera);
     window.requestAnimationFrame(tick);
 };
 
@@ -380,6 +416,7 @@ window.addEventListener('resize', () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
     perspectiveCamera.aspect = window.innerWidth / window.innerHeight;
     perspectiveCamera.updateProjectionMatrix();
+    cssRenderer.setSize(window.innerWidth, window.innerHeight);
 
 });
 
@@ -402,3 +439,9 @@ window.addEventListener('keydown', (event) => {
 /**
  * Screen handler
  */
+const cssRenderer = new CSS3DRenderer();
+cssRenderer.setSize(window.innerWidth, window.innerHeight);
+cssRenderer.domElement.style.position = 'absolute';
+cssRenderer.domElement.style.top = '0';
+cssRenderer.domElement.style.pointerEvents = 'none';
+document.body.appendChild(cssRenderer.domElement);

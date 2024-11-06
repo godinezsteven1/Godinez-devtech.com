@@ -30,7 +30,6 @@
         </div>
     </div>
 </div>
-
 <!-- Info and me -->
 <div class="info">
     <!-- LinkedIn Link -->
@@ -46,14 +45,16 @@
 <div class="bottom-text">
     <p> Click the Computer Screen to start, or Drag to look around!</p>
 </div>
-
+<!-- Back arrow  -->
 <div id="backArrow" class="back-arrow" onclick="zoomOut()">
     <span class="arrow-icon">←</span> Back
 </div>
-
-
-
 <canvas class="webgl"></canvas>
 <script type="module" src="./js/script.js"></script>
+
+<!-- Mini screen  -->
+<div id="compscreen-container">
+    <iframe id="compscreen" src="./tabs/home.html"></iframe>
+</div>
 </body>
 </html>
