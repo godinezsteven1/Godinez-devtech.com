@@ -299,7 +299,10 @@ loader.load('./Static/models/desk.glb', (gltf) => {
         cssObject.rotation.x += Math.PI * 0.5;
         cssObject.rotation.y += Math.PI * 0.75;
         cssObject.rotation.z -= Math.PI * 0.25;
-        cssObject.scale.set(0.005, 0.008, 0.005);
+        cssObject.scale.set(0.004, 0.005, 0.005);
+        cssObject.translateX(0.7);
+        cssObject.position.y += 0.2;
+
 
         scene.add(cssObject);
         console.log("CSS3D object added to scene");
