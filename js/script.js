@@ -174,7 +174,6 @@ controls.enableDamping = true;
 controls.minPolarAngle = Math.PI / 6;
 controls.maxPolarAngle = Math.PI / 2;// - Math.PI / 15;
 controls.target.set(-0.5249, -0.0701, -1.4007);
-// controls.enablePan = false; // for some reason crashes models when here
 controls.update();
 
 
@@ -275,6 +274,7 @@ loader.load('./Static/models/desk.glb', (gltf) => {
 
     compScreen = findScreenObj(desk);
     console.log("found compscreen line 282" , compScreen);
+
     if (compScreen) {
         compScreen.userData.isScreen = true;
         const screenElement = document.getElementById('compscreen-container');
@@ -283,6 +283,7 @@ loader.load('./Static/models/desk.glb', (gltf) => {
             console.error("Cant find compscreen-container");
             return;
         }
+
         const cssObject = new CSS3DObject(screenElement);
 
         const worldPos = new THREE.Vector3();
@@ -299,7 +300,14 @@ loader.load('./Static/models/desk.glb', (gltf) => {
         cssObject.rotation.x += Math.PI * 0.5;
         cssObject.rotation.y += Math.PI * 0.75;
         cssObject.rotation.z -= Math.PI * 0.25;
-        cssObject.scale.set(0.005, 0.008, 0.005);
+        cssObject.scale.set(0.004, 0.005, 0.005);
+        cssObject.translateX(0.7);
+        cssObject.position.y += 0.2;
+
+
+
+
+
 
         scene.add(cssObject);
         console.log("CSS3D object added to scene");
@@ -377,6 +385,7 @@ function zoomOut() {
  * Handle Screen Click for Zoom
  */
 window.addEventListener('click', (event) => {
+
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
     raycaster.setFromCamera(mouse, perspectiveCamera);
@@ -388,6 +397,8 @@ window.addEventListener('click', (event) => {
         zooming = true;
         zoomStartTime = performance.now();
         hideIntroBoxes();
+
+
         requestAnimationFrame(animateZoom);
     }
 });
@@ -399,10 +410,12 @@ window.addEventListener('click', (event) => {
  * Animation loop
  */
 const time = new THREE.Clock();
+
 const tick = () => {
     controls.update();
     renderer.render(scene, perspectiveCamera);
     cssRenderer.render(scene, perspectiveCamera);
+
     window.requestAnimationFrame(tick);
 };
 
