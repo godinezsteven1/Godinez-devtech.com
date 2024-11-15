@@ -1,23 +1,85 @@
-/* Styles for the compscreen container */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 #compscreen-container {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 1600px;
-    height: 1200px;
-    background-color: #000033;
-    border: 2px solid #33ff33;
-    display: none;
+    width: 80vw;
+    max-width: 1200px;
+    height: auto;
+    background: #1e1e1e;
+    border: 1px solid #444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     pointer-events: none;
 }
+
 #compscreen-container.active {
     pointer-events: auto;
 }
-/*!* Style for the actual iframe *!*/
-/*#compscreen {*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*    border: none;*/
-/*    display: block;*/
-/*}*/
+
+/* Main Terminal text */
+.terminal-content {
+    color: #e6e6e6;
+    font-family: 'SF Mono', 'Roboto Mono', monospace;
+    text-align: center;
+    line-height: 1.5;
+}
+
+/* Blink Animation */
+.blink {
+    color: #66ff99;
+    animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Menu Styling */
+.menu {
+    list-style-type: none;
+    padding: 1rem 0;
+}
+
+.menu-item {
+    margin: 0.5rem 0;
+}
+
+
+.menu-item a {
+    color: #66ff99;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: color 0.3s ease, transform 0.2s ease;
+    letter-spacing: 0.5px;
+}
+
+.menu-item a:hover {
+    color: #b3ffd9;
+    transform: scale(1.05);
+}
+
+
+body, .terminal-content {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+
+body {
+    background: linear-gradient(135deg, #121212, #222);
+}

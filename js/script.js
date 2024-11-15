@@ -163,9 +163,6 @@ renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
 
-
-
-
 /**
  * Orbit Controls
  */
@@ -176,20 +173,7 @@ controls.maxPolarAngle = Math.PI / 2;// - Math.PI / 15;
 controls.target.set(-0.5249, -0.0701, -1.4007);
 controls.update();
 
-
-
-
-
-
-/**
- * Raycaster
- */
-const raycaster = new Raycaster();
-const mouse = new THREE.Vector2();
 let compScreen;
-
-
-
 
 
 /**
@@ -208,8 +192,6 @@ directionalLight.shadow.mapSize.height = 4096;
 directionalLight.shadow.bias = -0.001;
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
 scene.add(ambientLight);
-
-
 
 
 
@@ -247,8 +229,6 @@ function findScreenObj(object) {
     }
     return null;
 }
-
-
 
 
 
@@ -291,7 +271,6 @@ loader.load('./Static/models/desk.glb', (gltf) => {
         compScreen.getWorldPosition(worldPos);
         compScreen.getWorldQuaternion(worldQuat);
 
-
         cssObject.position.copy(worldPos);
         cssObject.quaternion.copy(worldQuat);
         cssObject.position.y += 3.3;
@@ -303,11 +282,6 @@ loader.load('./Static/models/desk.glb', (gltf) => {
         cssObject.scale.set(0.004, 0.005, 0.005);
         cssObject.translateX(0.7);
         cssObject.position.y += 0.2;
-
-
-
-
-
 
         scene.add(cssObject);
         console.log("CSS3D object added to scene");
@@ -377,33 +351,18 @@ function zoomOut() {
     }
 }
 
-
-
-
-
 /**
- * Handle Screen Click for Zoom
+ * Zoom in handler
  */
-window.addEventListener('click', (event) => {
-
-    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
-    raycaster.setFromCamera(mouse, perspectiveCamera);
-
-    const intersects = raycaster.intersectObjects(scene.children, true);
-    const screenIntersect = intersects.find(intersect => intersect.object.userData.isScreen);
-
-    if (screenIntersect && !zooming && !isZoomedIn) {
+const bottomBox = document.querySelector('.bottom-text');
+bottomBox.addEventListener('click', () => {
+    if(!zooming && !isZoomedIn) {
         zooming = true;
         zoomStartTime = performance.now();
         hideIntroBoxes();
-
-
         requestAnimationFrame(animateZoom);
     }
-});
-
-
+})
 
 
 /**
@@ -415,7 +374,6 @@ const tick = () => {
     controls.update();
     renderer.render(scene, perspectiveCamera);
     cssRenderer.render(scene, perspectiveCamera);
-
     window.requestAnimationFrame(tick);
 };
 
@@ -434,19 +392,16 @@ window.addEventListener('resize', () => {
 });
 
 
-function logCameraInfoHelp() {
-    console.log("Camera Position:", perspectiveCamera.position);
-    console.log("Camera Target:", controls.target);
-}
-
-window.addEventListener('keydown', (event) => {
-    if (event.key === 'k') {
-        logCameraInfoHelp();
-    }
-});
-
-
-
+// function logCameraInfoHelp() {
+//     console.log("Camera Position:", perspectiveCamera.position);
+//     console.log("Camera Target:", controls.target);
+// }
+//
+// window.addEventListener('keydown', (event) => {
+//     if (event.key === 'k') {
+//         logCameraInfoHelp();
+//     }
+// });
 
 
 /**
