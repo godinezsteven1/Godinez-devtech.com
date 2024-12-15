@@ -5,25 +5,6 @@
     box-sizing: border-box;
 }
 
-#compscreen-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80vw;
-    max-width: 1200px;
-    height: auto;
-    background: #1e1e1e;
-    border: 1px solid #444;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-    pointer-events: none;
-}
-
 #compscreen-container.active {
     pointer-events: auto;
 }
@@ -36,7 +17,7 @@
     line-height: 1.5;
 }
 
-/* Blink Animation */
+/* hacker Blink Animation */
 .blink {
     color: #66ff99;
     animation: blink 1s steps(1) infinite;
@@ -54,16 +35,15 @@
     padding: 1rem 0;
 }
 
-.menu-item {
+.menu-item { /* element target only */
     margin: 0.5rem 0;
 }
-
 
 .menu-item a {
     color: #66ff99;
     text-decoration: none;
     font-weight: 500;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     transition: color 0.3s ease, transform 0.2s ease;
     letter-spacing: 0.5px;
 }
@@ -83,3 +63,7 @@ body, .terminal-content {
 body {
     background: linear-gradient(135deg, #121212, #222);
 }
+
+
+
+

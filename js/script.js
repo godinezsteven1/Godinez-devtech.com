@@ -7,7 +7,6 @@ import { CSS3DRenderer, CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRe
 
 
 
-
 /**
  * Loading screen
  */
@@ -20,6 +19,7 @@ const loadingWarning = document.getElementById('loadingWarning');
 // start button
 const startButton = document.getElementById('startButton');
 let loaders = false;
+document.getElementById('compscreen-container').style.display = 'block';
 
 
 
@@ -63,7 +63,8 @@ modelLoader.load(
     (gltf) => {
         // When the model is loaded, add it to the scene
         const desk = gltf.scene;
-        desk.scale.set(0.05, 0.05, 0.05);
+        // desk.scale.set(0.05, 0.05, 0.05);
+        // esk.scale.set(5, 5, 5);
         desk.position.set(-0.5, -1, -1);
         desk.rotation.y = (Math.PI / 2) + (Math.PI / 4);
         desk.traverse((node) => {
@@ -150,7 +151,7 @@ const perspectiveCamera = new THREE.PerspectiveCamera(
     window.innerWidth / window.innerHeight, // aspect
     0.1, // near
     1000); // far
-perspectiveCamera.position.set(10.5788, 6.68453, -4.7782); // les position it
+perspectiveCamera.position.set(293, 171, -4.7782); // les position it
 const renderer = new THREE.WebGLRenderer({
                                              canvas: document.querySelector('.webgl'),
                                              antialias: true,
@@ -171,6 +172,7 @@ controls.enableDamping = true;
 controls.minPolarAngle = Math.PI / 6;
 controls.maxPolarAngle = Math.PI / 2;// - Math.PI / 15;
 controls.target.set(-0.5249, -0.0701, -1.4007);
+
 controls.update();
 
 let compScreen;
@@ -240,7 +242,8 @@ function findScreenObj(object) {
 const loader = new GLTFLoader();
 loader.load('./Static/models/desk.glb', (gltf) => {
     const desk = gltf.scene;
-    desk.scale.set(0.05, 0.05, 0.05);
+    // desk.scale.set(0.05, 0.05, 0.05);
+    desk.scale.set(1,1,1);
     desk.position.set(-0.5, -1, -1);
     desk.rotation.y = (Math.PI / 2) + (Math.PI / 4);
     desk.traverse((node) => {
@@ -266,33 +269,41 @@ loader.load('./Static/models/desk.glb', (gltf) => {
 
         const cssObject = new CSS3DObject(screenElement);
 
+        // issue regarding screen spread
+        const screenContainer = document.getElementById('compscreen-container');
+        const containerWidth = screenContainer.offsetWidth;
+        const containerHeight = screenContainer.offsetHeight;
+
         const worldPos = new THREE.Vector3();
         const worldQuat = new THREE.Quaternion();
         compScreen.getWorldPosition(worldPos);
         compScreen.getWorldQuaternion(worldQuat);
 
+        //DO NOT MOVE THE ORDER FOR TRANSLATEX
         cssObject.position.copy(worldPos);
         cssObject.quaternion.copy(worldQuat);
-        cssObject.position.y += 3.3;
+        cssObject.position.y += 3.45;
         cssObject.position.z += 2.405;
-        cssObject.translateX(2.0);
+        cssObject.translateX(2.0); // dont know how to combine these
         cssObject.rotation.x += Math.PI * 0.5;
         cssObject.rotation.y += Math.PI * 0.75;
         cssObject.rotation.z -= Math.PI * 0.25;
-        cssObject.scale.set(0.004, 0.005, 0.005);
+        cssObject.scale.set(0.004, 0.005, 0.005); // this scaler
         cssObject.translateX(0.7);
-        cssObject.position.y += 0.2;
-
         scene.add(cssObject);
-        console.log("CSS3D object added to scene");
+        // console.log("CSS3D object added to scene"); // debbuging issues
     }
     });
+
+
 
 
 
 /**
  * Zoom to Screen Animation
  */
+// const originalPosition = new THREE.Vector3(261.64, 167.77, -91.73);
+// const originalTarget = new THREE.Vector3(-0.5249, -0.0701, -1.4007);
 const targetPosition = new THREE.Vector3(1.5415, 3.7098, -3.1233);
 const targetLookAt = new THREE.Vector3(-0.4790, 3.5714, -1.0756);
 let zooming = false;
@@ -318,7 +329,7 @@ const animateZoom = (currentTime) => {
     }
 };
 // zoom out animation
-const originalPosition = new THREE.Vector3(10.5788, 6.68453, -4.7782);
+const originalPosition = new THREE.Vector3(261.64, 167.77, -91.73);
 const originalTarget = new THREE.Vector3(-0.5249, -0.0701, -1.4007);
 
 function zoomOut() {
@@ -392,16 +403,16 @@ window.addEventListener('resize', () => {
 });
 
 
-// function logCameraInfoHelp() {
-//     console.log("Camera Position:", perspectiveCamera.position);
-//     console.log("Camera Target:", controls.target);
-// }
-//
-// window.addEventListener('keydown', (event) => {
-//     if (event.key === 'k') {
-//         logCameraInfoHelp();
-//     }
-// });
+function logCameraInfoHelp() {
+    console.log("Camera Position:", perspectiveCamera.position);
+    console.log("Camera Target:", controls.target);
+}
+
+window.addEventListener('keydown', (event) => {
+    if (event.key === 'k') {
+        logCameraInfoHelp();
+    }
+});
 
 
 /**
