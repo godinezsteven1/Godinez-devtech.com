@@ -151,7 +151,8 @@ const perspectiveCamera = new THREE.PerspectiveCamera(
     window.innerWidth / window.innerHeight, // aspect
     0.1, // near
     1000); // far
-perspectiveCamera.position.set(293, 171, -4.7782); // les position it
+// this is the initial camera view : )
+perspectiveCamera.position.set(-185, 234.67, 287.22); // les position it
 const renderer = new THREE.WebGLRenderer({
                                              canvas: document.querySelector('.webgl'),
                                              antialias: true,
@@ -244,8 +245,8 @@ loader.load('./Static/models/desk.glb', (gltf) => {
     const desk = gltf.scene;
     // desk.scale.set(0.05, 0.05, 0.05);
     desk.scale.set(1,1,1);
-    desk.position.set(-0.5, -1, -1);
-    desk.rotation.y = (Math.PI / 2) + (Math.PI / 4);
+    // desk.position.set(-0.5, -1, -1);
+    // desk.rotation.y = (Math.PI / 2) + (Math.PI / 4);
     desk.traverse((node) => {
         if (node.isMesh) {
             node.castShadow = true;
@@ -273,23 +274,30 @@ loader.load('./Static/models/desk.glb', (gltf) => {
         const screenContainer = document.getElementById('compscreen-container');
         const containerWidth = screenContainer.offsetWidth;
         const containerHeight = screenContainer.offsetHeight;
+        //
+        // const worldPos = new THREE.Vector3();
+        // // const worldQuat = new THREE.Quaternion();
+        // compScreen.getWorldPosition(worldPos);
+        // // compScreen.getWorldQuaternion(worldQuat);
+        //
+        // //DO NOT MOVE THE ORDER FOR TRANSLATEX
+        // cssObject.position.copy(worldPos);
+        // // cssObject.quaternion.copy(worldQuat);
 
-        const worldPos = new THREE.Vector3();
-        const worldQuat = new THREE.Quaternion();
-        compScreen.getWorldPosition(worldPos);
-        compScreen.getWorldQuaternion(worldQuat);
 
-        //DO NOT MOVE THE ORDER FOR TRANSLATEX
-        cssObject.position.copy(worldPos);
-        cssObject.quaternion.copy(worldQuat);
-        cssObject.position.y += 3.45;
-        cssObject.position.z += 2.405;
-        cssObject.translateX(2.0); // dont know how to combine these
-        cssObject.rotation.x += Math.PI * 0.5;
-        cssObject.rotation.y += Math.PI * 0.75;
-        cssObject.rotation.z -= Math.PI * 0.25;
-        cssObject.scale.set(0.004, 0.005, 0.005); // this scaler
-        cssObject.translateX(0.7);
+        // const targetVector = new THREE.Vector3(132.81660,89.59448,-158.809429);
+        cssObject.position.y += 95;
+        cssObject.position.z += 40;
+        cssObject.position.x += 3;
+        // cssObject.rotation.x += Math.PI * 0.5;
+        // cssObject.rotation.y += Math.PI * 0.75;
+        // cssObject.rotation.z -= Math.PI * 0.25;
+        // cssObject.lookAt(targetVector);
+        cssObject.scale.set(0.09, 0.1, 0.09); // this scaler
+        // cssObject.translateX(0.7);
+
+
+
         scene.add(cssObject);
         // console.log("CSS3D object added to scene"); // debbuging issues
     }
@@ -329,7 +337,7 @@ const animateZoom = (currentTime) => {
     }
 };
 // zoom out animation
-const originalPosition = new THREE.Vector3(261.64, 167.77, -91.73);
+const originalPosition = new THREE.Vector3(-185, 234.67, 287.22);
 const originalTarget = new THREE.Vector3(-0.5249, -0.0701, -1.4007);
 
 function zoomOut() {
