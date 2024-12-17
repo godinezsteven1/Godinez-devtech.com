@@ -51,38 +51,6 @@ function showWarningText() {
 writtingEffects("Loading Project Models...", loadingText, 80, showWarningText);
 
 
-
-
-
-/**
- * GLTF Loader for main screen
- */
-const modelLoader = new GLTFLoader();
-modelLoader.load(
-    './Static/Models/desk.glb',
-    (gltf) => {
-        // When the model is loaded, add it to the scene
-        const desk = gltf.scene;
-        // desk.scale.set(0.05, 0.05, 0.05);
-        // esk.scale.set(5, 5, 5);
-        desk.position.set(-0.5, -1, -1);
-        desk.rotation.y = (Math.PI / 2) + (Math.PI / 4);
-        desk.traverse((node) => {
-            if (node.isMesh) {
-                node.castShadow = true;
-                node.receiveShadow = true;
-            }
-        });
-    },
-    null,
-    (error) => {
-        console.error('An error occurred loading the model:', error);
-    }
-);
-
-
-
-
 /**
  * Start Experience Button Handler
  */
@@ -151,6 +119,7 @@ const perspectiveCamera = new THREE.PerspectiveCamera(
     window.innerWidth / window.innerHeight, // aspect
     0.1, // near
     1000); // far
+
 // this is the initial camera view : )
 perspectiveCamera.position.set(-185, 234.67, 287.22); // les position it
 const renderer = new THREE.WebGLRenderer({
@@ -170,10 +139,10 @@ renderer.shadowMap.type = THREE.PCFSoftShadowMap;
  */
 const controls = new OrbitControls(perspectiveCamera, renderer.domElement);
 controls.enableDamping = true;
+controls.enablePan = false;  // 2 finger move x axis
 controls.minPolarAngle = Math.PI / 6;
 controls.maxPolarAngle = Math.PI / 2;// - Math.PI / 15;
 controls.target.set(-0.5249, -0.0701, -1.4007);
-
 controls.update();
 
 let compScreen;
@@ -243,10 +212,6 @@ function findScreenObj(object) {
 const loader = new GLTFLoader();
 loader.load('./Static/models/desk.glb', (gltf) => {
     const desk = gltf.scene;
-    // desk.scale.set(0.05, 0.05, 0.05);
-    desk.scale.set(1,1,1);
-    // desk.position.set(-0.5, -1, -1);
-    // desk.rotation.y = (Math.PI / 2) + (Math.PI / 4);
     desk.traverse((node) => {
         if (node.isMesh) {
             node.castShadow = true;
@@ -254,7 +219,6 @@ loader.load('./Static/models/desk.glb', (gltf) => {
         }
     });
     scene.add(desk);
-    controls.enablePan = false;
 
     compScreen = findScreenObj(desk);
     console.log("found compscreen line 282" , compScreen);
@@ -274,32 +238,12 @@ loader.load('./Static/models/desk.glb', (gltf) => {
         const screenContainer = document.getElementById('compscreen-container');
         const containerWidth = screenContainer.offsetWidth;
         const containerHeight = screenContainer.offsetHeight;
-        //
-        // const worldPos = new THREE.Vector3();
-        // // const worldQuat = new THREE.Quaternion();
-        // compScreen.getWorldPosition(worldPos);
-        // // compScreen.getWorldQuaternion(worldQuat);
-        //
-        // //DO NOT MOVE THE ORDER FOR TRANSLATEX
-        // cssObject.position.copy(worldPos);
-        // // cssObject.quaternion.copy(worldQuat);
 
-
-        // const targetVector = new THREE.Vector3(132.81660,89.59448,-158.809429);
         cssObject.position.y += 95;
         cssObject.position.z += 40;
-        cssObject.position.x += 3;
-        // cssObject.rotation.x += Math.PI * 0.5;
-        // cssObject.rotation.y += Math.PI * 0.75;
-        // cssObject.rotation.z -= Math.PI * 0.25;
-        // cssObject.lookAt(targetVector);
+        cssObject.position.x += 1;
         cssObject.scale.set(0.09, 0.1, 0.09); // this scaler
-        // cssObject.translateX(0.7);
-
-
-
         scene.add(cssObject);
-        // console.log("CSS3D object added to scene"); // debbuging issues
     }
     });
 
@@ -310,10 +254,8 @@ loader.load('./Static/models/desk.glb', (gltf) => {
 /**
  * Zoom to Screen Animation
  */
-// const originalPosition = new THREE.Vector3(261.64, 167.77, -91.73);
-// const originalTarget = new THREE.Vector3(-0.5249, -0.0701, -1.4007);
-const targetPosition = new THREE.Vector3(1.5415, 3.7098, -3.1233);
-const targetLookAt = new THREE.Vector3(-0.4790, 3.5714, -1.0756);
+const targetPosition = new THREE.Vector3(1.64740, 90.80558, 70.21327);
+const targetLookAt = new THREE.Vector3(3.21295, 90.09702, -16.02079);
 let zooming = false;
 let zoomStartTime;
 const zoomDuration = 1.5;
