@@ -1,6 +1,5 @@
 body {
     background-color: #212121;
-    /*font-family: Arial, sans-serif;*/
     font-family: 'Roboto', sans-serif;
     display: flex;
     justify-content: center;
@@ -21,7 +20,7 @@ body {
     background: linear-gradient(#212121, #212121) padding-box,
     linear-gradient(145deg, transparent 35%,#e81cff, #40c9ff) border-box;
     border: 2px solid transparent;
-    padding: 32px 12px;
+    padding: 16px 6px;
     font-size: 7px;
     font-family: inherit;
     color: white;
@@ -33,7 +32,8 @@ body {
 }
 
 .form-container button:active {
-    scale: 0.95;
+    /*scale: 0.95;*/
+    scale: 0.60;
 }
 
 .form-container .form {
@@ -93,14 +93,15 @@ body {
 }
 
 .form-container .form-submit-btn {
+    transform: translateY(-15px);
+    width: 40px;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-    align-self: flex-start;
+    text-align: center;
     font-family: inherit;
     color: #717171;
     font-weight: 600;
-    width: 40%;
     background: #313131;
     border: 1px solid #414141;
     padding: 8px 8px;
@@ -131,30 +132,6 @@ input, textarea {
     font-weight: 500;
 }
 
-
-
-.back-link {
-    display: inline-block;
-    font-family: Arial, sans-serif;
-    font-size: 7px;
-    color: #fff;
-    background-color: #007BFF;
-    padding: 8px 16px;
-    text-decoration: none;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, box-shadow 0.3s;
-}
-
-.back-link:hover {
-    background-color: #0056b3;
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-}
-
-.back-link:active {
-    background-color: #003d80;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
-}
 
 
 

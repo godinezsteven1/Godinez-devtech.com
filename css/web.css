@@ -1,4 +1,4 @@
-
+/*blink animation here */
 * {
     margin: 0;
     padding: 0;
@@ -9,7 +9,6 @@
     pointer-events: auto;
 }
 
-/* Main Terminal text */
 .terminal-content {
     color: #e6e6e6;
     font-family: 'SF Mono', 'Roboto Mono', monospace;
@@ -17,7 +16,7 @@
     line-height: 1.5;
 }
 
-/* hacker Blink Animation */
+/* Blink Animation */
 .blink {
     color: #66ff99;
     animation: blink 1s steps(1) infinite;
@@ -29,7 +28,6 @@
     }
 }
 
-/* Menu Styling */
 .menu {
     list-style-type: none;
     padding: 1rem 0;
@@ -63,6 +61,11 @@ body, .terminal-content {
 body {
     background: linear-gradient(135deg, #121212, #222);
 }
+
+.welcome-text {
+    font-size: 1.5rem;
+}
+
 
 
 
