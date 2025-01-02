@@ -1,5 +1,4 @@
 .button {
-    transform: translate(95px,50px);
     position: relative;
     width: 155px;
     height: 30px;
@@ -11,6 +10,8 @@
     background-color: #323232; /* bg-color */
     border-radius: 10px;
     overflow: hidden;
+    bottom: -100px;
+    right: -95px;
 }
 
 .button, .button__icon, .button__text {
@@ -58,6 +59,6 @@
 }
 
 a {
-    text-decoration: none; /* Remove underline */
-    color: inherit; /* Inherit text color from the parent element */
+    text-decoration: none;
+    color: inherit;
 }
