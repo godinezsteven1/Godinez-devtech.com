@@ -1,62 +1,3 @@
-<!--<!DOCTYPE html>-->
-<!--<html>-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <link rel="stylesheet" href="../css/web.css">-->
-<!--    <link rel="stylesheet" href="../css/shared.css"> &lt;!&ndash; blink animation here &ndash;&gt;-->
-<!--    <link rel="stylesheet" href="../css/projects.css">-->
-<!--</head>-->
-<!--<body>-->
-<!--    <a href="home.html" class="back-link">&lt; Back</a>-->
-<!--    <div class="header">-->
-<!--        <h1>Projects<span class="blink">_</span></h1>-->
-<!--    </div>-->
-
-<!--    <ul class="project-list">-->
-<!--        <li class="project-item">AI Cyber Detector and Response</li>-->
-<!--        <div class="content">-->
-<!--            <p>-->
-<!--                        The Idea for this project came from the rapid growth on Artificial Intelligence-->
-<!--                        in the field of CS. This Software creates a blend between Cybersecurity and-->
-<!--                        AI. With currently 2 different versions, web and business. The web version is-->
-<!--                        built for those who own websites and wish to project them against hackers and-->
-<!--                        attacks such as XSS or SQL injections through my trained model. The business-->
-<!--                        version is a little more robust. The vision for the business version is to have-->
-<!--                        my model track information such as, log in times, usual package sizes, network analyzer,-->
-<!--                        location of log in times, unusual sign ins, and much more. Each person will have-->
-<!--                        their own personalized version of their activities that is monitored and learns-->
-<!--                        through AI unsupervised learning. All unusual activities is to be reported to-->
-<!--                        company executives through a dashboard with all of this information. Both the business-->
-<!--                        and web version include a database of blocked IPs that have been deemed suspicious.-->
-<!--            </p>-->
-<!--        </div>-->
-<!--        <li class="project-item">Stock Simulator</li>-->
-<!--        <div class="content">-->
-<!--            <p>-->
-<!--                        This Software is meant to be used as a tool for those who want to learn how to-->
-<!--                        buy, sell, and grow their stocks in a safe environment. This software works by-->
-<!--                        an API that allows the program to update on the latest information on stocks.-->
-<!--                        A user is then able to use the GUI as an application in order to buy, sell, store-->
-<!--                        stocks. This safe environment also has secret features that allows the user to-->
-<!--                        learn more about their portfolios built and their growth.-->
-<!--            </p>-->
-<!--        </div>-->
-<!--        <li class="project-item">Personal Website</li>-->
-<!--        <div class="content">-->
-<!--            <p>-->
-<!--                        This software inspired by henryheffernan.com , I loved the idea of creating-->
-<!--                        a 3D dimensional interactive world where Software Engineers can showcase their skills.-->
-<!--                        This website is built using only JavaScript, HTML, CSS, and blender. By importing-->
-<!--                        and editing the models to my desired vision, I was able to create a custom-->
-<!--                        screen overlay that allows me to contain my screen inside the computer model.-->
-<!--                        This gives the affect of a working 3D model computer. This environment has-->
-<!--                        taught me how to use vectors in a 3D space.-->
-<!--            </p>-->
-<!--        </div>-->
-<!--            &lt;!&ndash; Add more projects &ndash;&gt;-->
-<!--    </ul>-->
-<!--</body>-->
-<!--</html>-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,7 +6,7 @@
     <link rel="stylesheet" href="../css/shared.css"> <!-- blink animation here -->
     <link rel="stylesheet" href="../css/projects.css">
     <style>
-        /* Add this inline style to initially hide content */
+        /* initially hide content */
         .project-content {
             display: none;
         }
@@ -125,18 +66,20 @@
         </div>
         <div class="project-content">
             <p>
-                This software inspired by henryheffernan.com , I loved the idea of creating
+                This software inspired by henryheffernan.com, I loved the idea of creating
                 a 3D dimensional interactive world where Software Engineers can showcase their skills.
                 This website is built using only JavaScript, HTML, CSS, and blender. By importing
                 and editing the models to my desired vision, I was able to create a custom
                 screen overlay that allows me to contain my screen inside the computer model.
+                <img src="../Static/Images/Image4.png" alt="Project ScreenShot"
+                     width="320" height="150"
+                     style="float: left; margin: 0 15px 15px 0;"/>
                 This gives the affect of a working 3D model computer. This environment has
                 taught me how to use vectors in a 3D space.
             </p>
         </div>
     </div>
 </div>
-
 <script>
     document.querySelectorAll('.project-header').forEach(header => {
         header.style.cursor = 'pointer';

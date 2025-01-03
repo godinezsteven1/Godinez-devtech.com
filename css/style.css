@@ -6,7 +6,6 @@ canvas.webgl {
     width: 100vw;
     height: 100vh;
     background: linear-gradient(to bottom, #2b3038, #1f222a 40%, #121418 80%);
-    /*background: linear-gradient(to bottom, #2B1C10, #987284 40%, #6E493A 80%);*/
 }
 
 
