@@ -9,15 +9,18 @@
 </head>
 <body>
 <a href="home.html" class="back-link">&lt; Back</a>
+
+
 <div class="form-container">
-    <form class="form">
+    <form action="https://formspree.io/f/mzzzkdqr" method="POST" class="form">
+        <input type="text" name="_gotcha" style="display:none"> <!--lol-->
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="text" id="email" name="email" required="">
+            <input type="email" id="email" name="email" required>
         </div>
         <div class="form-group">
             <label for="textarea">How Can I Help You?</label>
-            <textarea name="textarea" id="textarea" rows="10" cols="50" required="">          </textarea>
+            <textarea name="message" id="textarea" rows="10" cols="50" required></textarea>
         </div>
         <button class="form-submit-btn" type="submit">Submit</button>
     </form>
