@@ -226,7 +226,7 @@ function findScreenObj(object) {
  */
 const loader = new GLTFLoader();
 // loader.load('./Static/Models/desk.glb', (gltf) => {
-loader.load('@/public/desk.glb', (gltf) => {
+loader.load('desk.gltf', (gltf) => {
     const desk = gltf.scene;
     desk.traverse((node) => {
         if (node.isMesh) {
