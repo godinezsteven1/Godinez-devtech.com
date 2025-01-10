@@ -225,7 +225,8 @@ function findScreenObj(object) {
  * loading monitor set up from 'Ethica' - 'https://sketchfab.com/Ethica'
  */
 const loader = new GLTFLoader();
-loader.load('./Static/Models/desk.glb', (gltf) => {
+// loader.load('./Static/Models/desk.glb', (gltf) => {
+loader.load('@/public/desk.glb', (gltf) => {
     const desk = gltf.scene;
     desk.traverse((node) => {
         if (node.isMesh) {
