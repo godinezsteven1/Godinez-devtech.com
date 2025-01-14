@@ -1,24 +1,12 @@
-import * as THREE from 'three' // was loading before
+// import * as THREE from 'three' // was loading before
+// import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+// import { CSS3DRenderer, CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
 
-
-
-// import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.module.js';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { CSS3DRenderer, CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
-
-
-
-// import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.150.1/examples/jsm/loaders/GLTFLoader.js';
-// import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.150.1/examples/jsm/controls/OrbitControls.js';
-// import { CSS3DRenderer, CSS3DObject } from 'https://cdn.jsdelivr.net/npm/three@0.150.1/examples/jsm/renderers/CSS3DRenderer.js';
-// import * as THREE from './three.module.js';
-
-// import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.module.js'; //try again
-// import { GLTFLoader } from './loaders/GLTFLoader.js';
-// import { OrbitControls } from './controls/OrbitControls.js';
-// import { CSS3DRenderer, CSS3DObject } from './renderers/CSS3DRenderer.js';
-
 
 
 
