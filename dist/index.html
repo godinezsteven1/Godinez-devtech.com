@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Godinez-Developer</title>
+    <link rel="stylesheet" href="./css/style.css">
 
     <style>
         body {
@@ -13,14 +14,12 @@
             Arial, sans-serif;
         }
     </style>
-  <script type="module" crossorigin src="/assets/index-QuUr8EB2.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-DlQ97NxG.css">
 </head>
 <body>
 <!-- Clean Loading Screen -->
 <div id="loadingTerminal" class="loading-screen">
     <div class="profile-container">
-        <img src="/assets/headshot-BXYMv6r2.JPG" alt="LinkedIn headshot" class="profile-pic">
+        <img src="./Static/LoadingScreen/headshot.JPG" alt="LinkedIn headshot" class="profile-pic">
         <span class="profile-name">Steven Godinez</span>
     </div>
     <div class="loading-container">
@@ -56,11 +55,24 @@
     <span class="arrow-icon">←</span> Back
 </div>
 <canvas class="webgl"></canvas>
+<script type="importmap">
+    {
+      "imports": {
+        "three": "./node_modules/three/build/three.module.js",
+        "three/examples/jsm/loaders/GLTFLoader.js": "./node_modules/three/examples/jsm/loaders/GLTFLoader.js",
+        "three/examples/jsm/controls/OrbitControls.js": "./node_modules/three/examples/jsm/controls/OrbitControls.js",
+        "three/examples/jsm/renderers/CSS3DRenderer.js": "./node_modules/three/examples/jsm/renderers/CSS3DRenderer.js",
+        "three/examples/jsm/renderers/CSS3DObject.js": "./node_modules/three/examples/jsm/renderers/CSS3DRenderer.js"
+      }
+    }
+</script>
+<script type="module" src="./js/script.js"></script>
+
 
 
 <!-- Mini screen  -->
 <div id="compscreen-container" class="active">
-    <iframe id="compscreen" src="/tabs/home.html"></iframe>
+    <iframe id="compscreen" src="./tabs/home.html"></iframe>
 </div>
 </body>
 </html>

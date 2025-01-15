@@ -1,78 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Godinez-Developer</title>
-    <link rel="stylesheet" href="./css/style.css">
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Godinez-Developer</title>-->
+<!--    <link rel="stylesheet" href="./css/style.css">-->
 
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
-            Arial, sans-serif;
-        }
-    </style>
-</head>
-<body>
-<!-- Clean Loading Screen -->
-<div id="loadingTerminal" class="loading-screen">
-    <div class="profile-container">
-        <img src="./Static/LoadingScreen/headshot.JPG" alt="LinkedIn headshot" class="profile-pic">
-        <span class="profile-name">Steven Godinez</span>
-    </div>
-    <div class="loading-container">
-        <div class="loading-text-container">
-            <p id="loadingText"></p>
-            <p id="loadingWarning">⚠️ View on Desktop for Best Experience</p>
-            <button id="startButton" onclick="startExperience()" style="display: none;">
-                Start Experience</button>
-        </div>
-    </div>
-</div>
-
-
-<!-- Viewing Card -->
-<div class="info">
-    <!-- LinkedIn Link -->
-    <a href="https://www.linkedin.com/in/godinezsteven/" target="_blank" class="item-sub">
-        Steven Godinez
-    </a>
-    <!-- GitHub Link -->
-    <a href="https://github.com/godinezsteven1" target="_blank" class="item-sub">
-        Software Engineer
-    </a>
-</div>
+<!--    <style>-->
+<!--        body {-->
+<!--            margin: 0;-->
+<!--            overflow: hidden;-->
+<!--            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",-->
+<!--            Arial, sans-serif;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--&lt;!&ndash; Clean Loading Screen &ndash;&gt;-->
+<!--<div id="loadingTerminal" class="loading-screen">-->
+<!--    <div class="profile-container">-->
+<!--        <img src="./Static/LoadingScreen/headshot.JPG" alt="LinkedIn headshot" class="profile-pic">-->
+<!--        <span class="profile-name">Steven Godinez</span>-->
+<!--    </div>-->
+<!--    <div class="loading-container">-->
+<!--        <div class="loading-text-container">-->
+<!--            <p id="loadingText"></p>-->
+<!--            <p id="loadingWarning">⚠️ View on Desktop for Best Experience</p>-->
+<!--            <button id="startButton" onclick="startExperience()" style="display: none;">-->
+<!--                Start Experience</button>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 
-<!-- Bottom text -->
-<div class="bottom-text">
-    <p> Click Me, or Drag to look around!</p>
-</div>
-<!-- Back arrow  -->
-<div id="backArrow" class="back-arrow" onclick="zoomOut()">
-    <span class="arrow-icon">←</span> Back
-</div>
-<canvas class="webgl"></canvas>
-<script type="importmap">
-    {
-      "imports": {
-        "three": "./node_modules/three/build/three.module.js",
-        "three/examples/jsm/loaders/GLTFLoader.js": "./node_modules/three/examples/jsm/loaders/GLTFLoader.js",
-        "three/examples/jsm/controls/OrbitControls.js": "./node_modules/three/examples/jsm/controls/OrbitControls.js",
-        "three/examples/jsm/renderers/CSS3DRenderer.js": "./node_modules/three/examples/jsm/renderers/CSS3DRenderer.js",
-        "three/examples/jsm/renderers/CSS3DObject.js": "./node_modules/three/examples/jsm/renderers/CSS3DRenderer.js"
-      }
-    }
-</script>
-<script type="module" src="./js/script.js"></script>
+<!--&lt;!&ndash; Viewing Card &ndash;&gt;-->
+<!--<div class="info">-->
+<!--    &lt;!&ndash; LinkedIn Link &ndash;&gt;-->
+<!--    <a href="https://www.linkedin.com/in/godinezsteven/" target="_blank" class="item-sub">-->
+<!--        Steven Godinez-->
+<!--    </a>-->
+<!--    &lt;!&ndash; GitHub Link &ndash;&gt;-->
+<!--    <a href="https://github.com/godinezsteven1" target="_blank" class="item-sub">-->
+<!--        Software Engineer-->
+<!--    </a>-->
+<!--</div>-->
+
+
+<!--&lt;!&ndash; Bottom text &ndash;&gt;-->
+<!--<div class="bottom-text">-->
+<!--    <p> Click Me, or Drag to look around!</p>-->
+<!--</div>-->
+<!--&lt;!&ndash; Back arrow  &ndash;&gt;-->
+<!--<div id="backArrow" class="back-arrow" onclick="zoomOut()">-->
+<!--    <span class="arrow-icon">←</span> Back-->
+<!--</div>-->
+<!--<canvas class="webgl"></canvas>-->
+<!--<script type="importmap">-->
+<!--    {-->
+<!--      "imports": {-->
+<!--        "three": "./node_modules/three/build/three.module.js",-->
+<!--        "three/examples/jsm/loaders/GLTFLoader.js": "./node_modules/three/examples/jsm/loaders/GLTFLoader.js",-->
+<!--        "three/examples/jsm/controls/OrbitControls.js": "./node_modules/three/examples/jsm/controls/OrbitControls.js",-->
+<!--        "three/examples/jsm/renderers/CSS3DRenderer.js": "./node_modules/three/examples/jsm/renderers/CSS3DRenderer.js",-->
+<!--        "three/examples/jsm/renderers/CSS3DObject.js": "./node_modules/three/examples/jsm/renderers/CSS3DRenderer.js"-->
+<!--      }-->
+<!--    }-->
+<!--</script>-->
+<!--<script type="module" src="./js/script.js"></script>-->
 
 
 
-<!-- Mini screen  -->
-<div id="compscreen-container" class="active">
-    <iframe id="compscreen" src="./tabs/home.html"></iframe>
-</div>
-</body>
-</html>
+<!--&lt;!&ndash; Mini screen  &ndash;&gt;-->
+<!--<div id="compscreen-container" class="active">-->
+<!--    <iframe id="compscreen" src="./tabs/home.html"></iframe>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
